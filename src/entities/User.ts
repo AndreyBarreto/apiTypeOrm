@@ -1,22 +1,27 @@
-import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
-import {v4 as uuid} from "uuid";
-
+import {Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, OneToOne} from "typeorm";
+import { Tarefa } from "./Tarefas";
 @Entity("users")
 class User {
-    @PrimaryColumn() readonly id: string;
-    @Column() name: string;
-    @Column() email: string;
-    @Column() admin: boolean;
+    @PrimaryGeneratedColumn("uuid") 
+    readonly id: string;
+    
+    @Column() 
+    name: string;
+    
+    @Column() 
+    email: string;
+    
+    @Column() 
+    admin: boolean;
+
+    @Column()
+    password:string;
+    
+    // @OneToOne(type=>Tarefa,users=>User)
+    // tarefas: Tarefa;
+    
     @CreateDateColumn()
     created_at: Date;
-    @CreateDateColumn()
-    updated_at: Date;
-
-    constructor(){
-        if(!this.id){
-            this.id = uuid();
-        }
-    }
 }
 
 export { User };
