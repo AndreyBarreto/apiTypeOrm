@@ -1,15 +1,10 @@
 //import { User } from "../entities/User";
 import {getCustomRepository} from "typeorm";
 import {TarefaRepositories } from "../repositories/TarefasRepositories";
-
-interface ITarefaRequest{
-    nome_tarefa: string;
-    descricao: string;
-    dificuldade: number;
-}
+import {ItarefaRequest} from "../controllers/CreateTarefasController"
 
 class CreateTarefaService{
-    async execute( {nome_tarefa,descricao,dificuldade} : ITarefaRequest){
+    async execute( {nome_tarefa,descricao,dificuldade} : ItarefaRequest){
         const usersRepository = getCustomRepository(TarefaRepositories) //new UsersRepositories();
 
         // if(!nome_tarefa){
