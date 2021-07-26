@@ -3,7 +3,7 @@ import { verify } from "jsonwebtoken"
 require('dotenv').config()
 
 
-export function adminAuth(
+export function authBasic(
     request: Request,
     response: Response,
     next: NextFunction
